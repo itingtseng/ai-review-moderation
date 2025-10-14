@@ -1,2 +1,3 @@
-# ai-review-moderation
-AI-driven review moderation and reporting analytics
+# AI Review Moderation
+
+An end-to-end AI PM project for analyzing and predicting reported reviews.

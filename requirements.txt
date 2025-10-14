@@ -1,0 +1,9 @@
+pandas
+scikit-learn
+matplotlib
+seaborn
+jupyter
+sentence-transformers
+faiss-cpu
+chromadb
+streamlit
