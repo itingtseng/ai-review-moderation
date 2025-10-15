@@ -1,0 +1,241 @@
+reason,term,score
+12,zones,0.0
+12,go the,0.0
+12,go into,0.0
+12,go live,0.0
+12,go look,0.0
+12,go off,0.0
+12,go on,0.0
+12,go out,0.0
+12,go outside,0.0
+12,go over,0.0
+12,go see,0.0
+12,go somewhere,0.0
+12,go specially,0.0
+12,go straight,0.0
+12,go there,0.0
+13,zones,0.0
+13,go the,0.0
+13,go into,0.0
+13,go live,0.0
+13,go look,0.0
+13,go off,0.0
+13,go on,0.0
+13,go out,0.0
+13,go outside,0.0
+13,go over,0.0
+13,go see,0.0
+13,go somewhere,0.0
+13,go specially,0.0
+13,go straight,0.0
+13,go there,0.0
+15,zones,0.0
+15,go the,0.0
+15,go into,0.0
+15,go live,0.0
+15,go look,0.0
+15,go off,0.0
+15,go on,0.0
+15,go out,0.0
+15,go outside,0.0
+15,go over,0.0
+15,go see,0.0
+15,go somewhere,0.0
+15,go specially,0.0
+15,go straight,0.0
+15,go there,0.0
+16,zones,0.0
+16,go the,0.0
+16,go into,0.0
+16,go live,0.0
+16,go look,0.0
+16,go off,0.0
+16,go on,0.0
+16,go out,0.0
+16,go outside,0.0
+16,go over,0.0
+16,go see,0.0
+16,go somewhere,0.0
+16,go specially,0.0
+16,go straight,0.0
+16,go there,0.0
+20,zones,0.0
+20,go the,0.0
+20,go into,0.0
+20,go live,0.0
+20,go look,0.0
+20,go off,0.0
+20,go on,0.0
+20,go out,0.0
+20,go outside,0.0
+20,go over,0.0
+20,go see,0.0
+20,go somewhere,0.0
+20,go specially,0.0
+20,go straight,0.0
+20,go there,0.0
+22,zones,0.0
+22,go the,0.0
+22,go into,0.0
+22,go live,0.0
+22,go look,0.0
+22,go off,0.0
+22,go on,0.0
+22,go out,0.0
+22,go outside,0.0
+22,go over,0.0
+22,go see,0.0
+22,go somewhere,0.0
+22,go specially,0.0
+22,go straight,0.0
+22,go there,0.0
+It contains false information,the,0.0977280645395841
+It contains false information,and,0.0713951963608184
+It contains false information,to,0.06111940456602673
+It contains false information,is,0.03912251434694478
+It contains false information,they,0.038269005739239075
+It contains false information,in,0.03819157092240974
+It contains false information,apos,0.0346628413968198
+It contains false information,of,0.03450907804537568
+It contains false information,you,0.033070538161794234
+It contains false information,was,0.030943906656994796
+It contains false information,it,0.030683840979140474
+It contains false information,my,0.028764864951111937
+It contains false information,that,0.028157675760204785
+It contains false information,for,0.028056040182812197
+It contains false information,not,0.026398932379501035
+It contains irrelevant information that is not useful,the,0.08269498222559414
+It contains irrelevant information that is not useful,and,0.05633991077879168
+It contains irrelevant information that is not useful,to,0.04942706147123117
+It contains irrelevant information that is not useful,44,0.03512140709459451
+It contains irrelevant information that is not useful,is,0.03286460235665316
+It contains irrelevant information that is not useful,in,0.03216548716223357
+It contains irrelevant information that is not useful,of,0.02907057498866645
+It contains irrelevant information that is not useful,you,0.026979335163929984
+It contains irrelevant information that is not useful,it,0.02552434796127328
+It contains irrelevant information that is not useful,they,0.02507631148433633
+It contains irrelevant information that is not useful,apos,0.024784382535092034
+It contains irrelevant information that is not useful,that,0.024212851048831974
+It contains irrelevant information that is not useful,have,0.023727020164815305
+It contains irrelevant information that is not useful,for,0.023725387853299564
+It contains irrelevant information that is not useful,was,0.023418082984401224
+It contains promotional materials,the,0.08535608132506983
+It contains promotional materials,and,0.07483557051089067
+It contains promotional materials,to,0.049075855821101355
+It contains promotional materials,is,0.04500656537403008
+It contains promotional materials,very,0.03397953263365581
+It contains promotional materials,in,0.029435841223620435
+It contains promotional materials,staff,0.02854134568742918
+It contains promotional materials,are,0.02807080652472777
+It contains promotional materials,it,0.027466994387249918
+It contains promotional materials,my,0.027445523077661495
+It contains promotional materials,great,0.02740249244130336
+It contains promotional materials,for,0.026800790491934207
+It contains promotional materials,apos,0.026718420977793554
+It contains promotional materials,of,0.02601860321122481
+It contains promotional materials,have,0.02497778958925457
+"It contains threats, lewdness or hate speech",the,0.10325861394771112
+"It contains threats, lewdness or hate speech",and,0.07074275440091295
+"It contains threats, lewdness or hate speech",to,0.06284740288001976
+"It contains threats, lewdness or hate speech",apos,0.0433540985318411
+"It contains threats, lewdness or hate speech",is,0.04329618882799394
+"It contains threats, lewdness or hate speech",you,0.04235817627259622
+"It contains threats, lewdness or hate speech",they,0.039957375404176834
+"It contains threats, lewdness or hate speech",in,0.03936904526539889
+"It contains threats, lewdness or hate speech",of,0.03805960822225219
+"It contains threats, lewdness or hate speech",44,0.034697491089205806
+"It contains threats, lewdness or hate speech",she,0.03091981926083291
+"It contains threats, lewdness or hate speech",that,0.030409944345531573
+"It contains threats, lewdness or hate speech",it,0.02986180493333224
+"It contains threats, lewdness or hate speech",are,0.028867154382928514
+"It contains threats, lewdness or hate speech",this,0.027614651788338617
+It violates ApartmentRatings' privacy standards,the,0.1066039023626128
+It violates ApartmentRatings' privacy standards,and,0.07549243331013032
+It violates ApartmentRatings' privacy standards,to,0.07150726544346302
+It violates ApartmentRatings' privacy standards,apos,0.043699241896222665
+It violates ApartmentRatings' privacy standards,is,0.04365152628874459
+It violates ApartmentRatings' privacy standards,in,0.03931282141003201
+It violates ApartmentRatings' privacy standards,they,0.036253823536721116
+It violates ApartmentRatings' privacy standards,of,0.03617210558746146
+It violates ApartmentRatings' privacy standards,you,0.035941801593850804
+It violates ApartmentRatings' privacy standards,she,0.03505033583106293
+It violates ApartmentRatings' privacy standards,was,0.033575316418411764
+It violates ApartmentRatings' privacy standards,that,0.032458444040104305
+It violates ApartmentRatings' privacy standards,my,0.0316650394168376
+It violates ApartmentRatings' privacy standards,it,0.030633879124970273
+It violates ApartmentRatings' privacy standards,for,0.029211429630981556
+"It was posted by a competitor, ex-employee or evicted resident",the,0.09750382021060408
+"It was posted by a competitor, ex-employee or evicted resident",and,0.0689915428060583
+"It was posted by a competitor, ex-employee or evicted resident",to,0.06371599324625289
+"It was posted by a competitor, ex-employee or evicted resident",apos,0.04202548514773767
+"It was posted by a competitor, ex-employee or evicted resident",they,0.04051159827005435
+"It was posted by a competitor, ex-employee or evicted resident",is,0.039825065083049935
+"It was posted by a competitor, ex-employee or evicted resident",you,0.038943512277814944
+"It was posted by a competitor, ex-employee or evicted resident",in,0.03865196207021097
+"It was posted by a competitor, ex-employee or evicted resident",of,0.035724275454175385
+"It was posted by a competitor, ex-employee or evicted resident",it,0.03126898424796122
+"It was posted by a competitor, ex-employee or evicted resident",not,0.03015051119198153
+"It was posted by a competitor, ex-employee or evicted resident",that,0.0284586338271795
+"It was posted by a competitor, ex-employee or evicted resident",my,0.027859712683879708
+"It was posted by a competitor, ex-employee or evicted resident",for,0.027101962050393273
+"It was posted by a competitor, ex-employee or evicted resident",was,0.02695900791412148
+It was posted by someone affiliated with the community,the,0.08683409997273403
+It was posted by someone affiliated with the community,and,0.07435318233528045
+It was posted by someone affiliated with the community,to,0.049949327013964824
+It was posted by someone affiliated with the community,is,0.04222023808028067
+It was posted by someone affiliated with the community,very,0.03093975092185986
+It was posted by someone affiliated with the community,in,0.030734677609677862
+It was posted by someone affiliated with the community,great,0.02936142167409767
+It was posted by someone affiliated with the community,are,0.029242655690642813
+It was posted by someone affiliated with the community,of,0.02652630542041484
+It was posted by someone affiliated with the community,staff,0.026192626898654918
+It was posted by someone affiliated with the community,have,0.02594266169373262
+It was posted by someone affiliated with the community,44,0.025364287101611066
+It was posted by someone affiliated with the community,my,0.025356782594584428
+It was posted by someone affiliated with the community,for,0.02461947473039362
+It was posted by someone affiliated with the community,it,0.024037646628777137
+It's for the wrong community,the,0.1028880268016048
+It's for the wrong community,and,0.06999533078397359
+It's for the wrong community,to,0.060376245794532254
+It's for the wrong community,is,0.03976096643016606
+It's for the wrong community,44,0.03969967117974248
+It's for the wrong community,they,0.0389222715011309
+It's for the wrong community,in,0.03830287398071927
+It's for the wrong community,you,0.03461631835639648
+It's for the wrong community,of,0.03461405426846245
+It's for the wrong community,it,0.03366950803725542
+It's for the wrong community,apos,0.03365588745733671
+It's for the wrong community,was,0.029972790254255123
+It's for the wrong community,that,0.028324246385615922
+It's for the wrong community,are,0.028213494112149032
+It's for the wrong community,for,0.027904415216049333
+It's influenced by COVID-19 / conavirus,the,0.09031337298097694
+It's influenced by COVID-19 / conavirus,and,0.06197932987944151
+It's influenced by COVID-19 / conavirus,to,0.056346642278955715
+It's influenced by COVID-19 / conavirus,apos,0.03826104733978095
+It's influenced by COVID-19 / conavirus,is,0.03707044731088713
+It's influenced by COVID-19 / conavirus,you,0.03633243652876987
+It's influenced by COVID-19 / conavirus,in,0.03449934751544013
+It's influenced by COVID-19 / conavirus,they,0.03105398139761569
+It's influenced by COVID-19 / conavirus,for,0.029765811503366085
+It's influenced by COVID-19 / conavirus,of,0.029609604116071782
+It's influenced by COVID-19 / conavirus,that,0.029065581801752685
+It's influenced by COVID-19 / conavirus,it,0.02831045541950822
+It's influenced by COVID-19 / conavirus,are,0.026373723131955386
+It's influenced by COVID-19 / conavirus,my,0.025498452884966532
+It's influenced by COVID-19 / conavirus,not,0.025283017441079716
+nan,zones,0.0
+nan,go the,0.0
+nan,go into,0.0
+nan,go live,0.0
+nan,go look,0.0
+nan,go off,0.0
+nan,go on,0.0
+nan,go out,0.0
+nan,go outside,0.0
+nan,go over,0.0
+nan,go see,0.0
+nan,go somewhere,0.0
+nan,go specially,0.0
+nan,go straight,0.0
+nan,go there,0.0

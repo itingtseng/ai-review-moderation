@@ -1,0 +1,404 @@
+year_month,reason,count
+2017-05,It contains irrelevant information that is not useful,1
+2017-05,It contains promotional materials,1
+2017-05,"It contains threats, lewdness or hate speech",2
+2017-05,It violates ApartmentRatings' privacy standards,2
+2017-05,It was posted by someone affiliated with the community,1
+2017-05,It's for the wrong community,2
+2017-06,It contains false information,53
+2017-06,It contains irrelevant information that is not useful,28
+2017-06,It contains promotional materials,2
+2017-06,"It contains threats, lewdness or hate speech",145
+2017-06,It violates ApartmentRatings' privacy standards,125
+2017-06,"It was posted by a competitor, ex-employee or evicted resident",87
+2017-06,It was posted by someone affiliated with the community,55
+2017-06,It's for the wrong community,36
+2017-07,It contains false information,97
+2017-07,It contains irrelevant information that is not useful,29
+2017-07,It contains promotional materials,4
+2017-07,"It contains threats, lewdness or hate speech",123
+2017-07,It violates ApartmentRatings' privacy standards,141
+2017-07,"It was posted by a competitor, ex-employee or evicted resident",85
+2017-07,It was posted by someone affiliated with the community,55
+2017-07,It's for the wrong community,31
+2017-08,It contains false information,107
+2017-08,It contains irrelevant information that is not useful,48
+2017-08,It contains promotional materials,2
+2017-08,"It contains threats, lewdness or hate speech",110
+2017-08,It violates ApartmentRatings' privacy standards,143
+2017-08,"It was posted by a competitor, ex-employee or evicted resident",117
+2017-08,It was posted by someone affiliated with the community,89
+2017-08,It's for the wrong community,38
+2017-09,It contains false information,51
+2017-09,It contains irrelevant information that is not useful,40
+2017-09,It contains promotional materials,4
+2017-09,"It contains threats, lewdness or hate speech",100
+2017-09,It violates ApartmentRatings' privacy standards,97
+2017-09,"It was posted by a competitor, ex-employee or evicted resident",86
+2017-09,It was posted by someone affiliated with the community,91
+2017-09,It's for the wrong community,31
+2017-10,It contains false information,83
+2017-10,It contains irrelevant information that is not useful,25
+2017-10,It contains promotional materials,6
+2017-10,"It contains threats, lewdness or hate speech",92
+2017-10,It violates ApartmentRatings' privacy standards,128
+2017-10,"It was posted by a competitor, ex-employee or evicted resident",117
+2017-10,It was posted by someone affiliated with the community,69
+2017-10,It's for the wrong community,36
+2017-11,It contains false information,75
+2017-11,It contains irrelevant information that is not useful,33
+2017-11,It contains promotional materials,7
+2017-11,"It contains threats, lewdness or hate speech",80
+2017-11,It violates ApartmentRatings' privacy standards,139
+2017-11,"It was posted by a competitor, ex-employee or evicted resident",74
+2017-11,It was posted by someone affiliated with the community,76
+2017-11,It's for the wrong community,40
+2017-12,It contains false information,120
+2017-12,It contains irrelevant information that is not useful,40
+2017-12,It contains promotional materials,10
+2017-12,"It contains threats, lewdness or hate speech",124
+2017-12,It violates ApartmentRatings' privacy standards,114
+2017-12,"It was posted by a competitor, ex-employee or evicted resident",84
+2017-12,It was posted by someone affiliated with the community,116
+2017-12,It's for the wrong community,45
+2018-01,It contains false information,130
+2018-01,It contains irrelevant information that is not useful,35
+2018-01,It contains promotional materials,9
+2018-01,"It contains threats, lewdness or hate speech",146
+2018-01,It violates ApartmentRatings' privacy standards,130
+2018-01,"It was posted by a competitor, ex-employee or evicted resident",160
+2018-01,It was posted by someone affiliated with the community,124
+2018-01,It's for the wrong community,89
+2018-02,It contains false information,191
+2018-02,It contains irrelevant information that is not useful,37
+2018-02,It contains promotional materials,39
+2018-02,"It contains threats, lewdness or hate speech",147
+2018-02,It violates ApartmentRatings' privacy standards,137
+2018-02,"It was posted by a competitor, ex-employee or evicted resident",157
+2018-02,It was posted by someone affiliated with the community,73
+2018-02,It's for the wrong community,50
+2018-03,It contains false information,175
+2018-03,It contains irrelevant information that is not useful,40
+2018-03,It contains promotional materials,13
+2018-03,"It contains threats, lewdness or hate speech",136
+2018-03,It violates ApartmentRatings' privacy standards,129
+2018-03,"It was posted by a competitor, ex-employee or evicted resident",182
+2018-03,It was posted by someone affiliated with the community,107
+2018-03,It's for the wrong community,38
+2018-04,It contains false information,135
+2018-04,It contains irrelevant information that is not useful,38
+2018-04,It contains promotional materials,9
+2018-04,"It contains threats, lewdness or hate speech",151
+2018-04,It violates ApartmentRatings' privacy standards,91
+2018-04,"It was posted by a competitor, ex-employee or evicted resident",166
+2018-04,It was posted by someone affiliated with the community,77
+2018-04,It's for the wrong community,42
+2018-05,It contains false information,156
+2018-05,It contains irrelevant information that is not useful,32
+2018-05,It contains promotional materials,5
+2018-05,"It contains threats, lewdness or hate speech",117
+2018-05,It violates ApartmentRatings' privacy standards,103
+2018-05,"It was posted by a competitor, ex-employee or evicted resident",169
+2018-05,It was posted by someone affiliated with the community,79
+2018-05,It's for the wrong community,43
+2018-06,It contains false information,133
+2018-06,It contains irrelevant information that is not useful,28
+2018-06,It contains promotional materials,10
+2018-06,"It contains threats, lewdness or hate speech",130
+2018-06,It violates ApartmentRatings' privacy standards,71
+2018-06,"It was posted by a competitor, ex-employee or evicted resident",118
+2018-06,It was posted by someone affiliated with the community,149
+2018-06,It's for the wrong community,47
+2018-07,It contains false information,173
+2018-07,It contains irrelevant information that is not useful,41
+2018-07,It contains promotional materials,8
+2018-07,"It contains threats, lewdness or hate speech",105
+2018-07,It violates ApartmentRatings' privacy standards,97
+2018-07,"It was posted by a competitor, ex-employee or evicted resident",138
+2018-07,It was posted by someone affiliated with the community,165
+2018-07,It's for the wrong community,65
+2018-08,It contains false information,133
+2018-08,It contains irrelevant information that is not useful,37
+2018-08,It contains promotional materials,5
+2018-08,"It contains threats, lewdness or hate speech",118
+2018-08,It violates ApartmentRatings' privacy standards,95
+2018-08,"It was posted by a competitor, ex-employee or evicted resident",172
+2018-08,It was posted by someone affiliated with the community,122
+2018-08,It's for the wrong community,57
+2018-09,It contains false information,165
+2018-09,It contains irrelevant information that is not useful,67
+2018-09,It contains promotional materials,9
+2018-09,"It contains threats, lewdness or hate speech",132
+2018-09,It violates ApartmentRatings' privacy standards,89
+2018-09,"It was posted by a competitor, ex-employee or evicted resident",124
+2018-09,It was posted by someone affiliated with the community,119
+2018-09,It's for the wrong community,62
+2018-10,It contains false information,214
+2018-10,It contains irrelevant information that is not useful,72
+2018-10,It contains promotional materials,11
+2018-10,"It contains threats, lewdness or hate speech",156
+2018-10,It violates ApartmentRatings' privacy standards,109
+2018-10,"It was posted by a competitor, ex-employee or evicted resident",180
+2018-10,It was posted by someone affiliated with the community,137
+2018-10,It's for the wrong community,49
+2018-11,It contains false information,178
+2018-11,It contains irrelevant information that is not useful,57
+2018-11,It contains promotional materials,24
+2018-11,"It contains threats, lewdness or hate speech",117
+2018-11,It violates ApartmentRatings' privacy standards,83
+2018-11,"It was posted by a competitor, ex-employee or evicted resident",162
+2018-11,It was posted by someone affiliated with the community,115
+2018-11,It's for the wrong community,38
+2018-12,It contains false information,176
+2018-12,It contains irrelevant information that is not useful,63
+2018-12,It contains promotional materials,32
+2018-12,"It contains threats, lewdness or hate speech",133
+2018-12,It violates ApartmentRatings' privacy standards,87
+2018-12,"It was posted by a competitor, ex-employee or evicted resident",147
+2018-12,It was posted by someone affiliated with the community,122
+2018-12,It's for the wrong community,19
+2019-01,It contains false information,295
+2019-01,It contains irrelevant information that is not useful,61
+2019-01,It contains promotional materials,50
+2019-01,"It contains threats, lewdness or hate speech",178
+2019-01,It violates ApartmentRatings' privacy standards,95
+2019-01,"It was posted by a competitor, ex-employee or evicted resident",240
+2019-01,It was posted by someone affiliated with the community,127
+2019-01,It's for the wrong community,79
+2019-02,It contains false information,191
+2019-02,It contains irrelevant information that is not useful,36
+2019-02,It contains promotional materials,9
+2019-02,"It contains threats, lewdness or hate speech",128
+2019-02,It violates ApartmentRatings' privacy standards,95
+2019-02,"It was posted by a competitor, ex-employee or evicted resident",204
+2019-02,It was posted by someone affiliated with the community,113
+2019-02,It's for the wrong community,33
+2019-03,It contains false information,177
+2019-03,It contains irrelevant information that is not useful,63
+2019-03,It contains promotional materials,9
+2019-03,"It contains threats, lewdness or hate speech",144
+2019-03,It violates ApartmentRatings' privacy standards,109
+2019-03,"It was posted by a competitor, ex-employee or evicted resident",176
+2019-03,It was posted by someone affiliated with the community,103
+2019-03,It's for the wrong community,52
+2019-04,It contains false information,149
+2019-04,It contains irrelevant information that is not useful,50
+2019-04,It contains promotional materials,3
+2019-04,"It contains threats, lewdness or hate speech",139
+2019-04,It violates ApartmentRatings' privacy standards,103
+2019-04,"It was posted by a competitor, ex-employee or evicted resident",159
+2019-04,It was posted by someone affiliated with the community,75
+2019-04,It's for the wrong community,42
+2019-05,It contains false information,201
+2019-05,It contains irrelevant information that is not useful,50
+2019-05,It contains promotional materials,7
+2019-05,"It contains threats, lewdness or hate speech",125
+2019-05,It violates ApartmentRatings' privacy standards,110
+2019-05,"It was posted by a competitor, ex-employee or evicted resident",209
+2019-05,It was posted by someone affiliated with the community,96
+2019-05,It's for the wrong community,36
+2019-06,It contains false information,173
+2019-06,It contains irrelevant information that is not useful,44
+2019-06,It contains promotional materials,10
+2019-06,"It contains threats, lewdness or hate speech",130
+2019-06,It violates ApartmentRatings' privacy standards,97
+2019-06,"It was posted by a competitor, ex-employee or evicted resident",145
+2019-06,It was posted by someone affiliated with the community,135
+2019-06,It's for the wrong community,65
+2019-07,It contains false information,160
+2019-07,It contains irrelevant information that is not useful,47
+2019-07,It contains promotional materials,7
+2019-07,"It contains threats, lewdness or hate speech",148
+2019-07,It violates ApartmentRatings' privacy standards,80
+2019-07,"It was posted by a competitor, ex-employee or evicted resident",137
+2019-07,It was posted by someone affiliated with the community,144
+2019-07,It's for the wrong community,89
+2019-08,It contains false information,136
+2019-08,It contains irrelevant information that is not useful,45
+2019-08,It contains promotional materials,8
+2019-08,"It contains threats, lewdness or hate speech",103
+2019-08,It violates ApartmentRatings' privacy standards,99
+2019-08,"It was posted by a competitor, ex-employee or evicted resident",175
+2019-08,It was posted by someone affiliated with the community,114
+2019-08,It's for the wrong community,44
+2019-09,It contains false information,138
+2019-09,It contains irrelevant information that is not useful,36
+2019-09,It contains promotional materials,3
+2019-09,"It contains threats, lewdness or hate speech",74
+2019-09,It violates ApartmentRatings' privacy standards,80
+2019-09,"It was posted by a competitor, ex-employee or evicted resident",127
+2019-09,It was posted by someone affiliated with the community,75
+2019-09,It's for the wrong community,37
+2019-10,It contains false information,173
+2019-10,It contains irrelevant information that is not useful,43
+2019-10,It contains promotional materials,4
+2019-10,"It contains threats, lewdness or hate speech",158
+2019-10,It violates ApartmentRatings' privacy standards,79
+2019-10,"It was posted by a competitor, ex-employee or evicted resident",168
+2019-10,It was posted by someone affiliated with the community,61
+2019-10,It's for the wrong community,75
+2019-11,It contains false information,127
+2019-11,It contains irrelevant information that is not useful,24
+2019-11,It contains promotional materials,22
+2019-11,"It contains threats, lewdness or hate speech",69
+2019-11,It violates ApartmentRatings' privacy standards,66
+2019-11,"It was posted by a competitor, ex-employee or evicted resident",98
+2019-11,It was posted by someone affiliated with the community,28
+2019-11,It's for the wrong community,16
+2019-12,It contains false information,125
+2019-12,It contains irrelevant information that is not useful,48
+2019-12,It contains promotional materials,86
+2019-12,"It contains threats, lewdness or hate speech",58
+2019-12,It violates ApartmentRatings' privacy standards,43
+2019-12,"It was posted by a competitor, ex-employee or evicted resident",111
+2019-12,It was posted by someone affiliated with the community,70
+2019-12,It's for the wrong community,26
+2020-01,It contains false information,221
+2020-01,It contains irrelevant information that is not useful,43
+2020-01,It contains promotional materials,42
+2020-01,"It contains threats, lewdness or hate speech",111
+2020-01,It violates ApartmentRatings' privacy standards,59
+2020-01,"It was posted by a competitor, ex-employee or evicted resident",182
+2020-01,It was posted by someone affiliated with the community,61
+2020-01,It's for the wrong community,57
+2020-02,It contains false information,189
+2020-02,It contains irrelevant information that is not useful,18
+2020-02,It contains promotional materials,35
+2020-02,"It contains threats, lewdness or hate speech",106
+2020-02,It violates ApartmentRatings' privacy standards,99
+2020-02,"It was posted by a competitor, ex-employee or evicted resident",156
+2020-02,It was posted by someone affiliated with the community,91
+2020-02,It's for the wrong community,48
+2020-03,It contains false information,113
+2020-03,It contains irrelevant information that is not useful,22
+2020-03,It contains promotional materials,3
+2020-03,"It contains threats, lewdness or hate speech",85
+2020-03,It violates ApartmentRatings' privacy standards,46
+2020-03,"It was posted by a competitor, ex-employee or evicted resident",109
+2020-03,It was posted by someone affiliated with the community,61
+2020-03,It's for the wrong community,24
+2020-04,It contains false information,137
+2020-04,It contains irrelevant information that is not useful,16
+2020-04,It contains promotional materials,3
+2020-04,"It contains threats, lewdness or hate speech",89
+2020-04,It violates ApartmentRatings' privacy standards,61
+2020-04,"It was posted by a competitor, ex-employee or evicted resident",114
+2020-04,It was posted by someone affiliated with the community,73
+2020-04,It's for the wrong community,22
+2020-05,It contains false information,109
+2020-05,It contains irrelevant information that is not useful,49
+2020-05,It contains promotional materials,9
+2020-05,"It contains threats, lewdness or hate speech",67
+2020-05,It violates ApartmentRatings' privacy standards,45
+2020-05,"It was posted by a competitor, ex-employee or evicted resident",106
+2020-05,It was posted by someone affiliated with the community,98
+2020-05,It's for the wrong community,23
+2020-06,It contains false information,88
+2020-06,It contains irrelevant information that is not useful,22
+2020-06,It contains promotional materials,195
+2020-06,"It contains threats, lewdness or hate speech",116
+2020-06,It violates ApartmentRatings' privacy standards,56
+2020-06,"It was posted by a competitor, ex-employee or evicted resident",90
+2020-06,It was posted by someone affiliated with the community,44
+2020-06,It's for the wrong community,46
+2020-07,It contains false information,119
+2020-07,It contains irrelevant information that is not useful,49
+2020-07,It contains promotional materials,31
+2020-07,"It contains threats, lewdness or hate speech",89
+2020-07,It violates ApartmentRatings' privacy standards,60
+2020-07,"It was posted by a competitor, ex-employee or evicted resident",176
+2020-07,It was posted by someone affiliated with the community,71
+2020-07,It's for the wrong community,47
+2020-08,It contains false information,105
+2020-08,It contains irrelevant information that is not useful,21
+2020-08,It contains promotional materials,25
+2020-08,"It contains threats, lewdness or hate speech",81
+2020-08,It violates ApartmentRatings' privacy standards,52
+2020-08,"It was posted by a competitor, ex-employee or evicted resident",62
+2020-08,It was posted by someone affiliated with the community,40
+2020-08,It's for the wrong community,28
+2020-09,It contains false information,83
+2020-09,It contains irrelevant information that is not useful,11
+2020-09,It contains promotional materials,151
+2020-09,"It contains threats, lewdness or hate speech",142
+2020-09,It violates ApartmentRatings' privacy standards,62
+2020-09,"It was posted by a competitor, ex-employee or evicted resident",84
+2020-09,It was posted by someone affiliated with the community,33
+2020-09,It's for the wrong community,24
+2020-10,It contains false information,95
+2020-10,It contains irrelevant information that is not useful,26
+2020-10,It contains promotional materials,104
+2020-10,"It contains threats, lewdness or hate speech",85
+2020-10,It violates ApartmentRatings' privacy standards,64
+2020-10,"It was posted by a competitor, ex-employee or evicted resident",61
+2020-10,It was posted by someone affiliated with the community,110
+2020-10,It's for the wrong community,28
+2020-11,It contains false information,111
+2020-11,It contains irrelevant information that is not useful,22
+2020-11,It contains promotional materials,11
+2020-11,"It contains threats, lewdness or hate speech",75
+2020-11,It violates ApartmentRatings' privacy standards,54
+2020-11,"It was posted by a competitor, ex-employee or evicted resident",49
+2020-11,It was posted by someone affiliated with the community,41
+2020-11,It's for the wrong community,28
+2020-12,It contains false information,91
+2020-12,It contains irrelevant information that is not useful,10
+2020-12,It contains promotional materials,41
+2020-12,"It contains threats, lewdness or hate speech",87
+2020-12,It violates ApartmentRatings' privacy standards,81
+2020-12,"It was posted by a competitor, ex-employee or evicted resident",61
+2020-12,It was posted by someone affiliated with the community,55
+2020-12,It's for the wrong community,14
+2021-01,It contains false information,97
+2021-01,It contains irrelevant information that is not useful,29
+2021-01,It contains promotional materials,11
+2021-01,"It contains threats, lewdness or hate speech",105
+2021-01,It violates ApartmentRatings' privacy standards,97
+2021-01,"It was posted by a competitor, ex-employee or evicted resident",64
+2021-01,It was posted by someone affiliated with the community,36
+2021-01,It's for the wrong community,25
+2021-02,It contains false information,272
+2021-02,It contains irrelevant information that is not useful,24
+2021-02,It contains promotional materials,16
+2021-02,"It contains threats, lewdness or hate speech",78
+2021-02,It violates ApartmentRatings' privacy standards,61
+2021-02,"It was posted by a competitor, ex-employee or evicted resident",130
+2021-02,It was posted by someone affiliated with the community,43
+2021-02,It's for the wrong community,55
+2021-03,It contains false information,126
+2021-03,It contains irrelevant information that is not useful,27
+2021-03,It contains promotional materials,7
+2021-03,"It contains threats, lewdness or hate speech",142
+2021-03,It violates ApartmentRatings' privacy standards,132
+2021-03,"It was posted by a competitor, ex-employee or evicted resident",102
+2021-03,It was posted by someone affiliated with the community,85
+2021-03,It's for the wrong community,28
+2021-04,It contains false information,118
+2021-04,It contains irrelevant information that is not useful,33
+2021-04,It contains promotional materials,4
+2021-04,"It contains threats, lewdness or hate speech",153
+2021-04,It violates ApartmentRatings' privacy standards,103
+2021-04,"It was posted by a competitor, ex-employee or evicted resident",74
+2021-04,It was posted by someone affiliated with the community,48
+2021-04,It's for the wrong community,45
+2021-05,It contains false information,84
+2021-05,It contains irrelevant information that is not useful,33
+2021-05,It contains promotional materials,7
+2021-05,"It contains threats, lewdness or hate speech",116
+2021-05,It violates ApartmentRatings' privacy standards,75
+2021-05,"It was posted by a competitor, ex-employee or evicted resident",55
+2021-05,It was posted by someone affiliated with the community,32
+2021-05,It's for the wrong community,14
+2021-06,It contains false information,2
+2021-06,It contains promotional materials,1
+2021-06,It was posted by someone affiliated with the community,1
+2021-06,It's for the wrong community,1
+2021-07,It violates ApartmentRatings' privacy standards,2
+2021-08,It contains false information,44
+2021-08,It contains irrelevant information that is not useful,5
+2021-08,It contains promotional materials,11
+2021-08,It violates ApartmentRatings' privacy standards,6
+2021-08,"It was posted by a competitor, ex-employee or evicted resident",18
+2021-08,It was posted by someone affiliated with the community,24
+2021-08,It's for the wrong community,8
+2021-09,"It contains threats, lewdness or hate speech",1
