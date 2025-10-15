@@ -1,0 +1,276 @@
+class,rank,token,weight
+It contains false information,1,terms,1.5244609055525336
+It contains false information,2,approved,0.9028905694656756
+It contains false information,3,called,0.808185057302816
+It contains false information,4,management,0.6250125983214581
+It contains false information,5,lease,0.6113648257366229
+It contains false information,6,rent,0.5967481757324548
+It contains false information,7,said,0.5692215822336064
+It contains false information,8,failed,0.558269170746729
+It contains false information,9,safety,0.5276425784673985
+It contains false information,10,deposit,0.5021263145986172
+It contains false information,11,horrible,0.4874779233901063
+It contains false information,12,break,0.4863596409109961
+It contains false information,13,explain,0.4847936000881707
+It contains false information,14,quot,0.4782225374345087
+It contains false information,15,car,0.46957251509135234
+It contains false information,16,bugs,0.46806754330055655
+It contains false information,17,told,0.46426891014607047
+It contains false information,18,conditions,0.4527182748530683
+It contains false information,19,stuff,0.44849697726767546
+It contains false information,20,lake,0.4484550498731435
+It contains false information,21,charged,0.4471482308591871
+It contains false information,22,tenant,0.42879452811897295
+It contains false information,23,house,0.4261279205578529
+It contains false information,24,fee,0.42144347715584957
+It contains false information,25,won,0.4183244861626831
+It contains irrelevant information that is not useful,1,characters,1.2929055498384383
+It contains irrelevant information that is not useful,2,39,1.1278816267068508
+It contains irrelevant information that is not useful,3,good,0.9178541852697897
+It contains irrelevant information that is not useful,4,comments,0.87577950210931
+It contains irrelevant information that is not useful,5,thank,0.8076099024947737
+It contains irrelevant information that is not useful,6,studio,0.7160146720783983
+It contains irrelevant information that is not useful,7,available,0.7119188561955525
+It contains irrelevant information that is not useful,8,¼ë,0.6978760221792351
+It contains irrelevant information that is not useful,9,review,0.6432831872618858
+It contains irrelevant information that is not useful,10,update,0.636303569468046
+It contains irrelevant information that is not useful,11,ok,0.6093038954608934
+It contains irrelevant information that is not useful,12,did,0.5929566100596342
+It contains irrelevant information that is not useful,13,comment,0.5875565503170787
+It contains irrelevant information that is not useful,14,recently,0.5712903241268289
+It contains irrelevant information that is not useful,15,change,0.5669600905821747
+It contains irrelevant information that is not useful,16,time,0.5647650761250742
+It contains irrelevant information that is not useful,17,quick,0.5634115882672635
+It contains irrelevant information that is not useful,18,sovereign,0.5622773003800492
+It contains irrelevant information that is not useful,19,spirit,0.555905782669372
+It contains irrelevant information that is not useful,20,say,0.5492692075464332
+It contains irrelevant information that is not useful,21,sutton,0.54408019410785
+It contains irrelevant information that is not useful,22,xxxxx,0.5400223393306408
+It contains irrelevant information that is not useful,23,hi,0.5370222940122295
+It contains irrelevant information that is not useful,24,fabio,0.5305697527648784
+It contains irrelevant information that is not useful,25,lives,0.5299209721562572
+It contains promotional materials,1,friendly,2.352491935843881
+It contains promotional materials,2,love,2.170038890862344
+It contains promotional materials,3,great,1.9124673578897142
+It contains promotional materials,4,community,1.7600430247931824
+It contains promotional materials,5,staff,1.7583165805583143
+It contains promotional materials,6,sutton,1.7210256737719474
+It contains promotional materials,7,nice,1.70876139016099
+It contains promotional materials,8,amenities,1.5523649376808952
+It contains promotional materials,9,amazing,1.5339966782547358
+It contains promotional materials,10,quiet,1.477524924831558
+It contains promotional materials,11,helpful,1.4650281530118916
+It contains promotional materials,12,recommend,1.454333357909962
+It contains promotional materials,13,clean,1.4366144143474184
+It contains promotional materials,14,spacious,1.3767539945275118
+It contains promotional materials,15,home,1.3132470930702853
+It contains promotional materials,16,pool,1.2949832208286625
+It contains promotional materials,17,maintenance,1.1923798971821506
+It contains promotional materials,18,best,1.1718644472004986
+It contains promotional materials,19,definitely,1.171444115055826
+It contains promotional materials,20,apartments,1.1206432465001686
+It contains promotional materials,21,easy,1.0836564621917881
+It contains promotional materials,22,landing,1.0481274502005113
+It contains promotional materials,23,safe,1.0449381082431393
+It contains promotional materials,24,beautiful,1.0308985696441508
+It contains promotional materials,25,super,1.0265612078255595
+"It contains threats, lewdness or hate speech",1,white,2.0286138935389215
+"It contains threats, lewdness or hate speech",2,black,2.005462544062548
+"It contains threats, lewdness or hate speech",3,racist,1.7360219515381827
+"It contains threats, lewdness or hate speech",4,ghetto,1.6345744258614006
+"It contains threats, lewdness or hate speech",5,people,1.5779650530150688
+"It contains threats, lewdness or hate speech",6,manager,1.1769435661674208
+"It contains threats, lewdness or hate speech",7,ass,1.0417948790591425
+"It contains threats, lewdness or hate speech",8,bitch,1.026208731907461
+"It contains threats, lewdness or hate speech",9,shit,0.986739983138896
+"It contains threats, lewdness or hate speech",10,rude,0.9848567581953032
+"It contains threats, lewdness or hate speech",11,don,0.9004462432711965
+"It contains threats, lewdness or hate speech",12,fucking,0.8428595083114991
+"It contains threats, lewdness or hate speech",13,fat,0.8371928732001404
+"It contains threats, lewdness or hate speech",14,place,0.8356034961068721
+"It contains threats, lewdness or hate speech",15,dont,0.8294037448706765
+"It contains threats, lewdness or hate speech",16,african,0.82547894357004
+"It contains threats, lewdness or hate speech",17,american,0.8227801381837482
+"It contains threats, lewdness or hate speech",18,section,0.7723191796743745
+"It contains threats, lewdness or hate speech",19,run,0.7569019413584644
+"It contains threats, lewdness or hate speech",20,worst,0.753753418321517
+"It contains threats, lewdness or hate speech",21,like,0.75191540302427
+"It contains threats, lewdness or hate speech",22,mexican,0.7516133328435318
+"It contains threats, lewdness or hate speech",23,apos,0.7310866135147385
+"It contains threats, lewdness or hate speech",24,dogs,0.7274012792297602
+"It contains threats, lewdness or hate speech",25,office,0.7189487707388299
+It violates ApartmentRatings' privacy standards,1,manager,2.336697455148258
+It violates ApartmentRatings' privacy standards,2,rude,1.5211507045909305
+It violates ApartmentRatings' privacy standards,3,residents,1.422226714426084
+It violates ApartmentRatings' privacy standards,4,leasing,0.8258481460110766
+It violates ApartmentRatings' privacy standards,5,office,0.8011570261560214
+It violates ApartmentRatings' privacy standards,6,unprofessional,0.7724133280438479
+It violates ApartmentRatings' privacy standards,7,customer,0.7534789078165618
+It violates ApartmentRatings' privacy standards,8,corporate,0.65926106825677
+It violates ApartmentRatings' privacy standards,9,horrible,0.649138186954023
+It violates ApartmentRatings' privacy standards,10,worst,0.6391896787829119
+It violates ApartmentRatings' privacy standards,11,lease,0.6279535784766082
+It violates ApartmentRatings' privacy standards,12,ashley,0.6167018009737143
+It violates ApartmentRatings' privacy standards,13,quot,0.5719434649416306
+It violates ApartmentRatings' privacy standards,14,does,0.5603906489987275
+It violates ApartmentRatings' privacy standards,15,attitude,0.5571961225517053
+It violates ApartmentRatings' privacy standards,16,jessica,0.5308962643181699
+It violates ApartmentRatings' privacy standards,17,assistant,0.5231600649410748
+It violates ApartmentRatings' privacy standards,18,care,0.5182208726950288
+It violates ApartmentRatings' privacy standards,19,karen,0.5160114809151212
+It violates ApartmentRatings' privacy standards,20,employees,0.4907032495510548
+It violates ApartmentRatings' privacy standards,21,weed,0.49013415828157314
+It violates ApartmentRatings' privacy standards,22,deposit,0.483295467759529
+It violates ApartmentRatings' privacy standards,23,nasty,0.47985760521688137
+It violates ApartmentRatings' privacy standards,24,person,0.4615742834913322
+It violates ApartmentRatings' privacy standards,25,didn,0.4553636949607465
+"It was posted by a competitor, ex-employee or evicted resident",1,manager,1.8853843031728494
+"It was posted by a competitor, ex-employee or evicted resident",2,worst,1.275784826966047
+"It was posted by a competitor, ex-employee or evicted resident",3,management,1.1040218744164825
+"It was posted by a competitor, ex-employee or evicted resident",4,mold,1.0550806418177714
+"It was posted by a competitor, ex-employee or evicted resident",5,rude,0.967340866193136
+"It was posted by a competitor, ex-employee or evicted resident",6,apos,0.9243995271891854
+"It was posted by a competitor, ex-employee or evicted resident",7,money,0.9220428944438878
+"It was posted by a competitor, ex-employee or evicted resident",8,roaches,0.9044365486450046
+"It was posted by a competitor, ex-employee or evicted resident",9,landlord,0.8437598723184206
+"It was posted by a competitor, ex-employee or evicted resident",10,tenants,0.8097069358950902
+"It was posted by a competitor, ex-employee or evicted resident",11,quot,0.7381072361790473
+"It was posted by a competitor, ex-employee or evicted resident",12,water,0.6714986863420446
+"It was posted by a competitor, ex-employee or evicted resident",13,got,0.660891535056555
+"It was posted by a competitor, ex-employee or evicted resident",14,rent,0.6511420574357165
+"It was posted by a competitor, ex-employee or evicted resident",15,poor,0.645841007971798
+"It was posted by a competitor, ex-employee or evicted resident",16,police,0.6442423374218971
+"It was posted by a competitor, ex-employee or evicted resident",17,dont,0.6419184672990091
+"It was posted by a competitor, ex-employee or evicted resident",18,tenant,0.6036820129684957
+"It was posted by a competitor, ex-employee or evicted resident",19,doesn,0.5813533132881727
+"It was posted by a competitor, ex-employee or evicted resident",20,live,0.572493309595875
+"It was posted by a competitor, ex-employee or evicted resident",21,air,0.5639149485970573
+"It was posted by a competitor, ex-employee or evicted resident",22,bad,0.5435360048736175
+"It was posted by a competitor, ex-employee or evicted resident",23,owner,0.5288480874218024
+"It was posted by a competitor, ex-employee or evicted resident",24,dirty,0.5248943358742386
+"It was posted by a competitor, ex-employee or evicted resident",25,bugs,0.516131013056639
+It was posted by someone affiliated with the community,1,great,2.515499149899608
+It was posted by someone affiliated with the community,2,love,2.1708378604210408
+It was posted by someone affiliated with the community,3,friendly,2.120199955477621
+It was posted by someone affiliated with the community,4,happy,1.6192283268868373
+It was posted by someone affiliated with the community,5,staff,1.615948208557742
+It was posted by someone affiliated with the community,6,helpful,1.374527411682048
+It was posted by someone affiliated with the community,7,location,1.306137452129911
+It was posted by someone affiliated with the community,8,new,1.2717615378647886
+It was posted by someone affiliated with the community,9,nice,1.250503053354367
+It was posted by someone affiliated with the community,10,amazing,1.240692367878055
+It was posted by someone affiliated with the community,11,really,1.189748333942375
+It was posted by someone affiliated with the community,12,best,1.1559776474732062
+It was posted by someone affiliated with the community,13,experience,1.0838190694026886
+It was posted by someone affiliated with the community,14,excellent,1.0761789923535177
+It was posted by someone affiliated with the community,15,quiet,1.0203304821420989
+It was posted by someone affiliated with the community,16,perfect,1.014055169705912
+It was posted by someone affiliated with the community,17,ve,1.0129696591395212
+It was posted by someone affiliated with the community,18,awesome,0.9646046135221221
+It was posted by someone affiliated with the community,19,beautiful,0.9633781163049437
+It was posted by someone affiliated with the community,20,maintained,0.9571247242867663
+It was posted by someone affiliated with the community,21,clean,0.9186137437565437
+It was posted by someone affiliated with the community,22,team,0.9081406486535382
+It was posted by someone affiliated with the community,23,wonderful,0.8792168456843776
+It was posted by someone affiliated with the community,24,center,0.8280400518768293
+It was posted by someone affiliated with the community,25,easy,0.8162096015039998
+It's for the wrong community,1,moved,1.0933235792835898
+It's for the wrong community,2,39,0.9950267093152211
+It's for the wrong community,3,parking,0.9238138880672715
+It's for the wrong community,4,water,0.8942986885888798
+It's for the wrong community,5,44,0.8931856367375844
+It's for the wrong community,6,days,0.8747903577182968
+It's for the wrong community,7,bad,0.8364581129526423
+It's for the wrong community,8,br,0.8312645460619681
+It's for the wrong community,9,lot,0.8063400263138303
+It's for the wrong community,10,major,0.7799281348911035
+It's for the wrong community,11,street,0.771137314119396
+It's for the wrong community,12,bugs,0.7648753393873255
+It's for the wrong community,13,mold,0.7440162777741453
+It's for the wrong community,14,night,0.7254996480598032
+It's for the wrong community,15,bed,0.6597460407428599
+It's for the wrong community,16,walls,0.6486473388399191
+It's for the wrong community,17,cheap,0.626765749372261
+It's for the wrong community,18,dirty,0.6152770021511951
+It's for the wrong community,19,34,0.6003750236681056
+It's for the wrong community,20,treat,0.5986347800569856
+It's for the wrong community,21,hear,0.597366883086363
+It's for the wrong community,22,fact,0.5942089814713627
+It's for the wrong community,23,noise,0.5742795097841067
+It's for the wrong community,24,landlords,0.5683578099215433
+It's for the wrong community,25,week,0.5669710837415051
+It's influenced by COVID-19 / conavirus,1,covid,3.1978863707307865
+It's influenced by COVID-19 / conavirus,2,terrible,2.153117286706739
+It's influenced by COVID-19 / conavirus,3,renewal,1.737709569452628
+It's influenced by COVID-19 / conavirus,4,screws,1.7033387820231016
+It's influenced by COVID-19 / conavirus,5,options,1.6515687252918985
+It's influenced by COVID-19 / conavirus,6,pay,1.6297508544692352
+It's influenced by COVID-19 / conavirus,7,disregard,1.59907920076414
+It's influenced by COVID-19 / conavirus,8,construction,1.5947458209655303
+It's influenced by COVID-19 / conavirus,9,community,1.540971390612442
+It's influenced by COVID-19 / conavirus,10,constant,1.408792843178689
+It's influenced by COVID-19 / conavirus,11,trash,1.3439835163092495
+It's influenced by COVID-19 / conavirus,12,broken,1.3076435553319055
+It's influenced by COVID-19 / conavirus,13,road,1.2927804875110616
+It's influenced by COVID-19 / conavirus,14,2020,1.2829603687208069
+It's influenced by COVID-19 / conavirus,15,completed,1.2755220243868568
+It's influenced by COVID-19 / conavirus,16,informed,1.2747306069189048
+It's influenced by COVID-19 / conavirus,17,19,1.2601319569888356
+It's influenced by COVID-19 / conavirus,18,citra,1.2423984045505667
+It's influenced by COVID-19 / conavirus,19,taken,1.2404525307311527
+It's influenced by COVID-19 / conavirus,20,simple,1.2392656836700386
+It's influenced by COVID-19 / conavirus,21,requests,1.2322268448647187
+It's influenced by COVID-19 / conavirus,22,casey,1.2275730472085193
+It's influenced by COVID-19 / conavirus,23,lakeside,1.2073410532032658
+It's influenced by COVID-19 / conavirus,24,garage,1.1981410057655777
+It's influenced by COVID-19 / conavirus,25,offer,1.1693455633261822
+Other,1,nan,5.6231976466403015
+Other,2,trestles,-4.0814994414501004e-12
+Other,3,ers,-1.0218522411303617e-11
+Other,4,brighton,-2.9974191777746015e-08
+Other,5,thorburn,-4.1570836887731626e-08
+Other,6,attendents,-7.18429369142588e-08
+Other,7,zaybastian,-7.27300648132428e-08
+Other,8,hyland,-8.168942766819519e-08
+Other,9,respondents,-1.0449858808532445e-07
+Other,10,wyvernwood,-1.2121677468873712e-07
+Other,11,llcs,-1.333558543755497e-07
+Other,12,orland,-1.35001491458232e-07
+Other,13,torree,-1.6026379956669442e-07
+Other,14,mayors,-1.6395483460893074e-07
+Other,15,heirlooms,-1.9217788277590998e-07
+Other,16,ryder,-2.791694049579906e-07
+Other,17,grandaughter,-2.873717476570352e-07
+Other,18,foley,-3.2203894508434106e-07
+Other,19,jailene,-3.2329321611415225e-07
+Other,20,keirsten,-4.376155070399829e-07
+Other,21,latrobe,-4.415937954318189e-07
+Other,22,8300,-4.759771680072191e-07
+Other,23,deidre,-5.147358915773053e-07
+Other,24,keystone,-6.119761460741323e-07
+Other,25,taa,-8.301757270346181e-07
+nan,1,nan,5.623274426175055
+nan,2,trestles,-7.519989934082375e-12
+nan,3,ers,-2.691339943274154e-11
+nan,4,thorburn,-4.3931800073323336e-08
+nan,5,brighton,-4.452609749112059e-08
+nan,6,attendents,-9.301060950307323e-08
+nan,7,zaybastian,-1.0065452861336287e-07
+nan,8,respondents,-1.2123002497493054e-07
+nan,9,hyland,-1.2662604534188949e-07
+nan,10,wyvernwood,-1.6775754768893113e-07
+nan,11,llcs,-1.7336126677923113e-07
+nan,12,orland,-1.9181905815349616e-07
+nan,13,torree,-1.9613703481608363e-07
+nan,14,mayors,-2.169088224033853e-07
+nan,15,heirlooms,-2.2718605308708294e-07
+nan,16,ryder,-3.155098669878675e-07
+nan,17,foley,-3.6750986548282887e-07
+nan,18,grandaughter,-3.7204243801229293e-07
+nan,19,jailene,-4.185477427638178e-07
+nan,20,keirsten,-5.465575854184523e-07
+nan,21,latrobe,-5.507989560650855e-07
+nan,22,keystone,-6.411935977579499e-07
+nan,23,deidre,-6.420312595461853e-07
+nan,24,8300,-6.479650912495496e-07
+nan,25,taa,-9.019406505682793e-07

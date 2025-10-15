@@ -1,0 +1,188 @@
+{
+  "val": {
+    "macro_f1": 0.19032088575741354,
+    "report": {
+      "12": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "16": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "It contains false information": {
+        "precision": 0.21621621621621623,
+        "recall": 0.22705771050141912,
+        "f1-score": 0.22150438394093216,
+        "support": 1057.0
+      },
+      "It contains irrelevant information that is not useful": {
+        "precision": 0.22899159663865545,
+        "recall": 0.41923076923076924,
+        "f1-score": 0.296195652173913,
+        "support": 260.0
+      },
+      "It contains promotional materials": {
+        "precision": 0.19301470588235295,
+        "recall": 0.6730769230769231,
+        "f1-score": 0.3,
+        "support": 156.0
+      },
+      "It contains threats, lewdness or hate speech": {
+        "precision": 0.33516483516483514,
+        "recall": 0.0729665071770335,
+        "f1-score": 0.11984282907662082,
+        "support": 836.0
+      },
+      "It violates ApartmentRatings' privacy standards": {
+        "precision": 0.27259684361549497,
+        "recall": 0.28106508875739644,
+        "f1-score": 0.2767662053896577,
+        "support": 676.0
+      },
+      "It was posted by a competitor, ex-employee or evicted resident": {
+        "precision": 0.5,
+        "recall": 0.004343105320304018,
+        "f1-score": 0.008611410118406888,
+        "support": 921.0
+      },
+      "It was posted by someone affiliated with the community": {
+        "precision": 0.208955223880597,
+        "recall": 0.32830820770519265,
+        "f1-score": 0.2553745928338762,
+        "support": 597.0
+      },
+      "It's for the wrong community": {
+        "precision": 0.1507177033492823,
+        "recall": 0.4228187919463087,
+        "f1-score": 0.2222222222222222,
+        "support": 298.0
+      },
+      "It's influenced by COVID-19 / conavirus": {
+        "precision": 0.21875,
+        "recall": 0.2916666666666667,
+        "f1-score": 0.25,
+        "support": 24.0
+      },
+      "OTHER": {
+        "precision": 0.2,
+        "recall": 1.0,
+        "f1-score": 0.3333333333333333,
+        "support": 1.0
+      },
+      "accuracy": 0.2152029826014913,
+      "macro avg": {
+        "precision": 0.2103672603956195,
+        "recall": 0.3100444808651678,
+        "f1-score": 0.19032088575741354,
+        "support": 4828.0
+      },
+      "weighted avg": {
+        "precision": 0.2937597478295189,
+        "recall": 0.2152029826014913,
+        "f1-score": 0.18189081597735685,
+        "support": 4828.0
+      }
+    }
+  },
+  "test": {
+    "macro_f1": 0.19106403426695923,
+    "report": {
+      "12": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "13": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "16": {
+        "precision": 0.0,
+        "recall": 0.0,
+        "f1-score": 0.0,
+        "support": 1.0
+      },
+      "It contains false information": {
+        "precision": 0.2372718539865514,
+        "recall": 0.24824120603015076,
+        "f1-score": 0.24263261296660119,
+        "support": 995.0
+      },
+      "It contains irrelevant information that is not useful": {
+        "precision": 0.244,
+        "recall": 0.41216216216216217,
+        "f1-score": 0.3065326633165829,
+        "support": 296.0
+      },
+      "It contains promotional materials": {
+        "precision": 0.21404109589041095,
+        "recall": 0.7142857142857143,
+        "f1-score": 0.32938076416337286,
+        "support": 175.0
+      },
+      "It contains threats, lewdness or hate speech": {
+        "precision": 0.32367149758454106,
+        "recall": 0.08190709046454768,
+        "f1-score": 0.13073170731707318,
+        "support": 818.0
+      },
+      "It violates ApartmentRatings' privacy standards": {
+        "precision": 0.26685393258426965,
+        "recall": 0.296875,
+        "f1-score": 0.28106508875739644,
+        "support": 640.0
+      },
+      "It was posted by a competitor, ex-employee or evicted resident": {
+        "precision": 0.625,
+        "recall": 0.00522466039707419,
+        "f1-score": 0.010362694300518135,
+        "support": 957.0
+      },
+      "It was posted by someone affiliated with the community": {
+        "precision": 0.20444444444444446,
+        "recall": 0.30564784053156147,
+        "f1-score": 0.24500665778961384,
+        "support": 602.0
+      },
+      "It's for the wrong community": {
+        "precision": 0.18474374255065554,
+        "recall": 0.5115511551155115,
+        "f1-score": 0.2714535901926445,
+        "support": 303.0
+      },
+      "It's influenced by COVID-19 / conavirus": {
+        "precision": 0.36363636363636365,
+        "recall": 0.3076923076923077,
+        "f1-score": 0.3333333333333333,
+        "support": 39.0
+      },
+      "OTHER": {
+        "precision": 0.2,
+        "recall": 1.0,
+        "f1-score": 0.3333333333333333,
+        "support": 1.0
+      },
+      "accuracy": 0.22944709049492648,
+      "macro avg": {
+        "precision": 0.22028176389824902,
+        "recall": 0.2987374720522331,
+        "f1-score": 0.19106403426695923,
+        "support": 4829.0
+      },
+      "weighted avg": {
+        "precision": 0.3257146854640195,
+        "recall": 0.22944709049492648,
+        "f1-score": 0.19250565809873982,
+        "support": 4829.0
+      }
+    }
+  }
+}

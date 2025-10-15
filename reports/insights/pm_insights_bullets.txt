@@ -1,0 +1,5 @@
+- Top reasons by volume: It contains false information (6794), It was posted by a competitor, ex-employee or evicted resident (6167), It contains threats, lewdness or hate speech (5546).
+- Month-over-month total volume change: -99.1% (heuristic).
+- Peak posting hour: 13.0:00; Peak day: Thursday.
+- Example top terms for '12': zones, go the, go into, go live, go look.
+- High-risk complexes detected (top-1 by heuristic): 317542053146226.0 (risk_score 1.00).

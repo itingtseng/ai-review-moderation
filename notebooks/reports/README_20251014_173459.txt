@@ -1,0 +1,9 @@
+Run timestamp: 2025-10-14T17:34:59
+Model path: artifacts/model_char_svm.pkl
+Labels path: artifacts/labels.npy
+Num labels: 10
+Notes:
+- Character-level TF-IDF + LinearSVC pipeline loaded from artifacts.
+- Batch inference expects a CSV with a 'text' column.
+- If labeled CSV is provided, we compute classification report and confusion matrix.
+- We also save low-confidence cases (by top-2 margin) for human review.
