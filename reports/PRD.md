@@ -1,14 +1,9 @@
-
----
 Author: I-Ting (Tiffany) Tseng  
 Date: 2025-10-15  
 Version: v1.0  
 
-## 📘 **2️⃣ reports/PRD.md**
-📍 路徑：`reports/PRD.md`
-
-```markdown
 # 📘 Product Requirement Document (PRD)
+
 ## Project: AI Review Moderation
 
 ### 1. 🎯 Overview
