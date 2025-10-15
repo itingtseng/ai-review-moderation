@@ -1,35 +1,36 @@
-# 🧠 AI Review Moderation Demo
-
-A lightweight **end-to-end AI moderation system** built for detecting and explaining risky user reviews (spam, fake, promotional, or policy-violating posts).  
-This demo predicts moderation **reason**, shows **model confidence**, and retrieves **similar historical examples** using FAISS or TF-IDF fallback.
-
-🌐 **Live Demo:** [https://ai-review-moderation.streamlit.app](https://ai-review-moderation.streamlit.app)
+# 🤖 AI Review Moderation System  
+*Automated Review Classification & Semantic Similarity Search*
 
 ---
 
-## 🚀 Features
+## 🌟 Overview
 
-- 🧩 Text input → Reason prediction (`model_baseline.pkl`)
-- 📊 Confidence score and keyword highlights
-- 🔍 Top-k similar examples retrieved via FAISS / TF-IDF cosine
-- ⚙️ Auto-fallback if no index available
-- 🌈 Streamlit-based UI (1-click deploy to Streamlit Cloud)
+This project builds an **AI-driven review moderation system** that automatically detects, explains, and retrieves similar problematic user reviews (spam, fake, or inappropriate).  
+It combines **ML classification**, **semantic search (FAISS)**, and **Streamlit visualization** into one end-to-end workflow.
 
----
-
-## 🧱 Architecture Overview
+> 🧠 Designed & implemented by [I-Ting (Tiffany) Tseng](https://github.com/itingtseng)
 
 ---
 
-## 📊 Insights Highlights
+## 🚀 Live Demo
 
-This notebook (`notebooks/05_insights.ipynb`) generates descriptive analytics about the moderation dataset.
+🎬 **Try it here:** [👉 Streamlit App](https://ai-review-moderation-yourname.streamlit.app)
 
-| Chart | Description |
-|-------|--------------|
-| ![Class Distribution](reports/insights/class_distribution.png) | Volume by `reason` |
-| ![Trend](reports/insights/monthly_trend_topN.png) | Monthly trend of top 8 reasons |
+- 📝 Input a review → get predicted **moderation reason** + confidence  
+- 🔍 Retrieve **similar cases** from FAISS vector index  
+- 📊 View descriptive **insights** on review patterns and trends  
 
-**PM Insights (auto-generated):**
-```text
-<copy the content of reports/insights/pm_insights_bullets.txt here>
+---
+
+## 🧩 System Architecture
+
+```mermaid
+flowchart LR
+    A[User Input] --> B[FastAPI Backend]
+    B -->|Embedding| C[SentenceTransformer]
+    C -->|Vector Search| D[FAISS Index]
+    B -->|Classification| E[LogReg Model]
+    D --> F[Similar Examples]
+    E --> G[Predicted Reason + Confidence]
+    F --> H[Streamlit Frontend]
+    G --> H
