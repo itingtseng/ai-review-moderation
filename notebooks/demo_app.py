@@ -1,19 +1,19 @@
 # demo_app.py
 # ------------------------------------------------------------------------------
 # Streamlit UI for AI Review Moderation
-# - Tab 1: Inference (call FastAPI /similar, optional local baseline model)
-# - Tab 2: Insights (show charts + top TF-IDF terms CSV)
+# - Tab 1: Inference (optional FastAPI /similar, local baseline model)
+# - Tab 2: Insights (charts + top TF-IDF terms CSV)
 #
 # Notes:
-# * Comments are in English only (per your request).
+# * Comments are in English only.
 # * API URL priority: st.secrets["API_URL"] -> env var API_URL -> default http://127.0.0.1:8010
-# * All assets are expected relative to the project root (run from repo root).
+# * Run this from repo root (e.g., `streamlit run notebooks/demo_app.py`).
 # ------------------------------------------------------------------------------
 
 import os
 import json
 from pathlib import Path
-from typing import List, Dict, Any, Optional
+from typing import List, Dict, Any, Optional, Tuple
 
 import requests
 import streamlit as st
@@ -23,35 +23,32 @@ import pandas as pd
 st.set_page_config(page_title="AI Review Moderation Demo", layout="wide")
 st.title("🛡️ AI Review Moderation Demo")
 
-# --- Config & helpers ---
+# --- Paths & constants ---
 ROOT = Path(__file__).resolve().parents[1] if (Path(__file__).name == "demo_app.py") else Path.cwd()
 INSIGHTS_DIR = ROOT / "reports" / "insights"
 TERMS_CSV = INSIGHTS_DIR / "top_terms_per_reason.csv"
 CHART_DIST = INSIGHTS_DIR / "class_distribution.png"
 CHART_TREND = INSIGHTS_DIR / "monthly_trend_topN.png"
-BASELINE_PATH = ROOT / "notebooks" / "model_baseline.pkl"  # adjust if you saved elsewhere
+
+# >>> Baseline model now expected at app/model_baseline.pkl (for Streamlit Cloud)
+BASELINE_PATH = ROOT / "app" / "model_baseline.pkl"
 
 def get_api_url() -> str:
-    # Read from Streamlit secrets if present, else env var, else default
+    """Resolve API base URL from secrets -> env -> default."""
     api_from_secrets = None
     try:
-        api_from_secrets = st.secrets.get("API_URL")  # may raise if no secrets file
+        api_from_secrets = st.secrets.get("API_URL")
     except Exception:
         api_from_secrets = None
-    return (
-        api_from_secrets
-        or os.environ.get("API_URL")
-        or "http://127.0.0.1:8010"
-    )
+    return api_from_secrets or os.environ.get("API_URL") or "http://127.0.0.1:8010"
 
-API_URL = get_api_url().rstrip("/")
+API_URL_DEFAULT = get_api_url().rstrip("/")
 
 @st.cache_data(show_spinner=False)
 def load_terms_csv(csv_path: Path) -> Optional[pd.DataFrame]:
     if csv_path.exists():
         try:
-            df = pd.read_csv(csv_path)
-            return df
+            return pd.read_csv(csv_path)
         except Exception as e:
             st.warning(f"Failed to read {csv_path.name}: {e}")
     return None
@@ -59,28 +56,57 @@ def load_terms_csv(csv_path: Path) -> Optional[pd.DataFrame]:
 def post_json(url: str, payload: Dict[str, Any], timeout: int = 30) -> requests.Response:
     return requests.post(url, json=payload, timeout=timeout)
 
-# Optional: try to load a local baseline sklearn pipeline if available
+# ---------- Baseline model helpers ----------
 @st.cache_resource(show_spinner=False)
 def load_baseline_model() -> Optional[Any]:
+    """Load a sklearn Pipeline saved via joblib (if present)."""
     try:
-        import joblib  # lazy import
+        import joblib
         if BASELINE_PATH.exists():
             return joblib.load(BASELINE_PATH)
     except Exception as e:
         st.info(f"Baseline model not available: {e}")
     return None
 
+def _extract_classes(pipeline: Any) -> Optional[List[str]]:
+    """Try to obtain class labels from sklearn estimator or final step."""
+    try:
+        if hasattr(pipeline, "classes_"):
+            return [str(x) for x in pipeline.classes_]
+        # Try final estimator in Pipeline
+        if hasattr(pipeline, "steps") and pipeline.steps:
+            est = pipeline.steps[-1][1]
+            if hasattr(est, "classes_"):
+                return [str(x) for x in est.classes_]
+    except Exception:
+        pass
+    return None
+
+def _topk_from_proba(classes: Optional[List[str]], proba_row: List[float], k: int = 3) -> List[Tuple[str, float]]:
+    """Return top-k (label, prob) pairs from a single predict_proba row."""
+    import numpy as np
+    p = np.array(proba_row)
+    idx = p.argsort()[::-1][:k]
+    labels = classes if classes is not None else [f"class_{i}" for i in range(len(p))]
+    return [(labels[i], float(p[i])) for i in idx]
+
 def predict_baseline(pipeline, texts: List[str]) -> Dict[str, Any]:
-    """Predict using a scikit-learn text pipeline (if available)."""
-    out: Dict[str, Any] = {"preds": [], "proba": None}
+    """Predict reason & confidence using sklearn pipeline."""
+    out: Dict[str, Any] = {"preds": [], "confidence": None, "top3": None}
     try:
         y_pred = pipeline.predict(texts)
-        out["preds"] = list(map(lambda x: x if isinstance(x, str) else str(x), y_pred))
-        # Try to get probabilities if classifier supports it
+        out["preds"] = [str(y_pred[0]) if len(y_pred) else ""]
+        classes = _extract_classes(pipeline)
+
         if hasattr(pipeline, "predict_proba"):
-            proba = pipeline.predict_proba(texts)
-            # For a single text, return top-3 classes with their prob
-            out["proba"] = proba.tolist()
+            proba = pipeline.predict_proba(texts)  # shape: (n_samples, n_classes)
+            row = proba[0].tolist()
+            # Top-1 confidence and top-3 breakdown
+            top3 = _topk_from_proba(classes, row, k=3)
+            out["top3"] = top3
+            out["confidence"] = top3[0][1]  # probability of predicted class
+        else:
+            out["confidence"] = None
     except Exception as e:
         out["error"] = f"Baseline prediction failed: {e}"
     return out
@@ -97,14 +123,18 @@ with tab1:
     # Sidebar controls
     with st.sidebar:
         st.markdown("### API Settings")
-        st.caption("Change only if your API runs on a different host/port.")
-        api_url_input = st.text_input("FastAPI base URL", value=API_URL, help="Example: http://127.0.0.1:8010")
-        use_baseline = st.checkbox("Use local baseline model (optional)", value=True, help="Requires model_baseline.pkl")
+        st.caption("Enable only if you have a FastAPI server running (e.g., locally).")
+        use_api = st.checkbox("Use FastAPI /similar (optional)", value=False, help="If off, the app won't call /similar.")
+        api_url_input = st.text_input("FastAPI base URL", value=API_URL_DEFAULT, help="Example: http://127.0.0.1:8010")
+        use_baseline = st.checkbox("Use local baseline model (optional)", value=True, help="Requires app/model_baseline.pkl")
         show_raw = st.checkbox("Show raw JSON", value=False)
     API_URL = api_url_input.rstrip("/")
 
     # Input area
-    default_text = "This post contains spam links like http://cheap.example"
+    default_text = (
+        "Living at The Melar has been a wonderful experience. The building is well-maintained, "
+        "the location is unbeatable, and the amenities are solid. The staff is exceptional!"
+    )
     text = st.text_area("Enter a review to analyze", value=default_text, height=140)
     k = st.slider("Top-K similar examples", min_value=1, max_value=10, value=5, step=1)
 
@@ -112,66 +142,80 @@ with tab1:
     with cols[0]:
         run_infer = st.button("Analyze")
     with cols[1]:
-        st.markdown(f"**API Health:** `{API_URL}/health`")
+        if use_api:
+            st.markdown(f"**API Health:** `{API_URL}/health`")
+        else:
+            st.caption("FastAPI is disabled by default on cloud. Toggle it on only if an API is reachable.")
 
     # Results
     if run_infer:
         if not text.strip():
             st.warning("Please enter some text.")
         else:
-            # Call /similar for nearest neighbors
-            with st.spinner("Calling /similar ..."):
-                try:
-                    r = post_json(f"{API_URL}/similar", {"text": text, "k": k}, timeout=60)
-                    if r.status_code == 200:
-                        sim = r.json()
-                        if show_raw:
-                            st.code(json.dumps(sim, indent=2)[:5000], language="json")
-                        items = sim.get("items", [])
-                        st.success(f"Similar examples (k={len(items)}) via {sim.get('vector_backend','?')}")
-                        if items:
-                            # Pretty table for similar results
-                            rows = []
-                            for it in items:
-                                meta = it.get("meta", {})
-                                rows.append({
-                                    "index": it.get("index"),
-                                    "distance": round(it.get("distance", 0.0), 4),
-                                    "reason": meta.get("reason"),
-                                    "date_created": meta.get("date_created"),
-                                    "object_id": meta.get("object_id"),
-                                    "complex_id": meta.get("complex_id"),
-                                })
-                            st.dataframe(pd.DataFrame(rows), use_container_width=True)
+            # ---------- Optional: call FastAPI /similar ----------
+            if use_api:
+                with st.spinner("Calling /similar ..."):
+                    try:
+                        r = post_json(f"{API_URL}/similar", {"text": text, "k": k}, timeout=60)
+                        if r.status_code == 200:
+                            sim = r.json()
+                            if show_raw:
+                                st.code(json.dumps(sim, indent=2)[:5000], language="json")
+                            items = sim.get("items", [])
+                            st.success(f"Similar examples (k={len(items)}) via {sim.get('vector_backend','?')}")
+                            if items:
+                                rows = []
+                                for it in items:
+                                    meta = it.get("meta", {})
+                                    rows.append({
+                                        "index": it.get("index"),
+                                        "distance": round(it.get("distance", 0.0), 4),
+                                        "reason": meta.get("reason"),
+                                        "date_created": meta.get("date_created"),
+                                        "object_id": meta.get("object_id"),
+                                        "complex_id": meta.get("complex_id"),
+                                    })
+                                st.dataframe(pd.DataFrame(rows), use_container_width=True)
+                            else:
+                                st.info("No items returned.")
                         else:
-                            st.info("No items returned.")
-                    else:
-                        st.error(f"/similar returned HTTP {r.status_code}: {r.text[:400]}")
-                except Exception as e:
-                    st.error(f"Request failed: {e}")
+                            st.error(f"/similar returned HTTP {r.status_code}: {r.text[:400]}")
+                    except Exception as e:
+                        st.error(f"Request failed: {e}")
 
-            # Optional: local baseline model prediction
+            # ---------- Local baseline prediction (reason + confidence) ----------
             if use_baseline:
                 baseline = load_baseline_model()
                 if baseline is None:
-                    st.info("No local baseline model found (expected notebooks/model_baseline.pkl).")
+                    st.info("No local baseline model found (expected app/model_baseline.pkl).")
                 else:
                     with st.spinner("Running baseline prediction ..."):
                         res = predict_baseline(baseline, [text])
                         if "error" in res:
                             st.error(res["error"])
                         else:
-                            cols2 = st.columns([1, 1])
-                            with cols2[0]:
+                            # Predicted reason + confidence
+                            reason = (res.get("preds") or [""])[0]
+                            conf = res.get("confidence")
+                            left, right = st.columns([1, 1])
+                            with left:
                                 st.markdown("**Baseline Predicted Reason**")
-                                st.info(res["preds"][0] if res["preds"] else "(no prediction)")
-                            with cols2[1]:
-                                if res.get("proba"):
-                                    st.markdown("**Baseline Probabilities (top classes)**")
-                                    # We don't know class order here; show vector length only
-                                    st.write(res["proba"][0][:5])
+                                st.info(reason if reason else "(no prediction)")
+                            with right:
+                                st.markdown("**Confidence**")
+                                if conf is not None:
+                                    st.metric("Probability", f"{conf:.3f}")
                                 else:
-                                    st.caption("Classifier does not expose predict_proba()")
+                                    st.caption("Classifier does not expose predict_proba().")
+
+                            # Show top-3 class probabilities if available
+                            top3 = res.get("top3")
+                            if top3:
+                                st.markdown("**Top-3 class probabilities**")
+                                top_df = pd.DataFrame(
+                                    [{"label": lbl, "probability": round(p, 4)} for (lbl, p) in top3]
+                                )
+                                st.dataframe(top_df, use_container_width=True)
 
 # ==============================================================================
 # Tab 2: Insights
@@ -197,7 +241,6 @@ with tab2:
     st.markdown("**Top TF-IDF Terms per Reason**")
     df_terms = load_terms_csv(TERMS_CSV)
     if df_terms is not None and not df_terms.empty:
-        # Optional small filters
         cols3 = st.columns([2, 2, 1])
         with cols3[0]:
             reasons = sorted(df_terms["reason"].dropna().astype(str).unique().tolist())
@@ -208,7 +251,6 @@ with tab2:
         if pick:
             out_df = out_df[out_df["reason"].astype(str).isin(pick)]
         st.dataframe(out_df.head(int(topn)), use_container_width=True)
-        # Download button
         st.download_button(
             label="Download CSV",
             data=out_df.to_csv(index=False).encode("utf-8"),
@@ -220,7 +262,7 @@ with tab2:
 
 # --- Footer info ---
 st.caption(
-    f"API base: `{API_URL}`  •  "
+    f"API base: `{API_URL_DEFAULT}`  •  "
     f"Insights dir: `{INSIGHTS_DIR.relative_to(ROOT)}`  •  "
     f"Baseline model: `{BASELINE_PATH.relative_to(ROOT)}`"
 )
