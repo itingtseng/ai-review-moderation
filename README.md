@@ -34,6 +34,7 @@ flowchart LR
     E --> G[Predicted Reason + Confidence]
     F --> H[Streamlit Frontend]
     G --> H
+```
 
 ---
 
@@ -75,19 +76,6 @@ This notebook (notebooks/05_insights.ipynb) generates descriptive analytics abou
 - ✅ Improves reviewer transparency & trust via confidence visualization
 - ✅ Supports scalable AI–human hybrid workflows
 - ✅ Enables data-driven policy updates through trend insights
-
----
-
-## 🧰 Tech Stack
-
-| Layer | Tools |
-|-------|-------|
-| Frontend | Streamlit |
-| Backend | FastAPI / Python |
-| ML | scikit-learn, SentenceTransformer |
-| Vector DB | FAISS |
-| Visualization | Matplotlib, Seaborn |
-| Docs & Governance | PRD.md · model_card.md · ethics.md |
 
 ---
 
