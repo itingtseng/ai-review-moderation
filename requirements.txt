@@ -1,9 +1,6 @@
-pandas
+streamlit
 scikit-learn
-matplotlib
-seaborn
-jupyter
+pandas
+numpy
 sentence-transformers
 faiss-cpu
-chromadb
-streamlit
