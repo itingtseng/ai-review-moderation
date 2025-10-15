@@ -21,6 +21,7 @@ __pycache__/
 # data/
 outputs/
 artifacts/
+data/raw/
 # reports/     
 # vector_index/
 # model_*.pkl
