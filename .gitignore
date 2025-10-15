@@ -18,12 +18,10 @@ __pycache__/
 # ------------------------------
 # Data & model artifacts
 # ------------------------------
-# 保留 data、vector_index、model 檔案以便 Streamlit Cloud 使用
-# （上傳後再恢復安全版）
 # data/
 outputs/
 artifacts/
-# reports/     # <— reports 內的 Markdown 要推上去，所以不要忽略
+# reports/     
 # vector_index/
 # model_*.pkl
 # *.faiss
