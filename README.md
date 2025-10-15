@@ -14,7 +14,7 @@ It combines **ML classification**, **semantic search (FAISS)**, and **Streamlit 
 
 ## 🚀 Live Demo
 
-🎬 **Try it here:** [👉 Streamlit App](https://ai-review-moderation-yourname.streamlit.app)
+🎬 **Try it here:** [👉 Streamlit App](https://ai-review-moderation-l3qjzfruzteibe839gksno.streamlit.app)
 
 - 📝 Input a review → get predicted **moderation reason** + confidence  
 - 🔍 Retrieve **similar cases** from FAISS vector index  
