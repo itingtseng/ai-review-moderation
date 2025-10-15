@@ -19,3 +19,17 @@ This demo predicts moderation **reason**, shows **model confidence**, and retrie
 
 ## 🧱 Architecture Overview
 
+---
+
+## 📊 Insights Highlights
+
+This notebook (`notebooks/05_insights.ipynb`) generates descriptive analytics about the moderation dataset.
+
+| Chart | Description |
+|-------|--------------|
+| ![Class Distribution](reports/insights/class_distribution.png) | Volume by `reason` |
+| ![Trend](reports/insights/monthly_trend_topN.png) | Monthly trend of top 8 reasons |
+
+**PM Insights (auto-generated):**
+```text
+<copy the content of reports/insights/pm_insights_bullets.txt here>

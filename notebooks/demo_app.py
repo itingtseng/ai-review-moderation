@@ -1,248 +1,226 @@
+# demo_app.py
+# ------------------------------------------------------------------------------
+# Streamlit UI for AI Review Moderation
+# - Tab 1: Inference (call FastAPI /similar, optional local baseline model)
+# - Tab 2: Insights (show charts + top TF-IDF terms CSV)
+#
+# Notes:
+# * Comments are in English only (per your request).
+# * API URL priority: st.secrets["API_URL"] -> env var API_URL -> default http://127.0.0.1:8010
+# * All assets are expected relative to the project root (run from repo root).
+# ------------------------------------------------------------------------------
+
 import os
-from pathlib import Path
 import json
-import numpy as np
-import pandas as pd
+from pathlib import Path
+from typing import List, Dict, Any, Optional
+
+import requests
 import streamlit as st
+import pandas as pd
 
-# ---------------------------
-# Loading & caching utilities
-# ---------------------------
-
-@st.cache_resource(show_spinner=False)
-def load_model():
-    """Load the baseline sklearn pipeline (model_baseline.pkl)."""
-    import joblib
-    p = Path("model_baseline.pkl")
-    return joblib.load(p) if p.exists() else None
-
-@st.cache_resource(show_spinner=False)
-def load_faiss_index():
-    """Try loading FAISS index and id_map. Return (index, id_map, msg)."""
-    try:
-        import faiss  # type: ignore
-    except Exception:
-        return None, None, "FAISS not available (faiss-cpu not installed)."
-
-    vec_dir = Path("vector_index")
-    index_path = vec_dir / "index.faiss"
-    idmap_path = vec_dir / "id_map.json"
-    if not index_path.exists() or not idmap_path.exists():
-        return None, None, "vector_index/ files not found."
-
-    index = faiss.read_index(str(index_path))
-    with open(idmap_path, "r", encoding="utf-8") as f:
-        id_map = json.load(f)
-    return index, id_map, None
-
-@st.cache_resource(show_spinner=False)
-def load_embedder():
-    """Load the same ST model used to build FAISS."""
-    from sentence_transformers import SentenceTransformer
-    return SentenceTransformer("sentence-transformers/all-MiniLM-L6-v2")
-
-@st.cache_resource(show_spinner=False)
-def load_corpus_for_fallback(expected_len: int | None):
-    """
-    Load the text corpus for TF-IDF fallback.
-    Tries processed CSVs and aligns with id_map length when possible.
-    Returns (texts, meta_df, msg).
-    """
-    # Try common paths
-    candidates = [
-        Path("data/processed/reported_reviews_clean.csv"),
-        Path("data/processed/reviews_clean.csv"),
-    ]
-    df = None
-    for p in candidates:
-        if p.exists():
-            df = pd.read_csv(p)
-            break
-    if df is None:
-        return None, None, "No processed CSV found under data/processed/."
-
-    if "review_text" not in df.columns:
-        return None, None, "CSV has no 'review_text' column."
-
-    # If expected_len (from id_map) is provided, check alignment quickly
-    if expected_len is not None and len(df) != expected_len:
-        # Not fatal: we can still build TF-IDF; metadata may not align 1:1 with id_map
-        # We'll still return df for generic metadata.
-        pass
-
-    return df["review_text"].astype(str).tolist(), df, None
-
-@st.cache_resource(show_spinner=False)
-def build_tfidf_index(texts: list[str]):
-    """Build TF-IDF matrix for cosine fallback."""
-    from sklearn.feature_extraction.text import TfidfVectorizer
-    from sklearn.metrics.pairwise import linear_kernel
-
-    vec = TfidfVectorizer(ngram_range=(1, 2), min_df=2, max_features=100_000)
-    X = vec.fit_transform(texts)
-    return {"vectorizer": vec, "matrix": X}  # store in resource cache
-
-def tfidf_search(query: str, tfidf_store: dict, top_k: int = 5):
-    """Return (scores, indices) using cosine similarity on TF-IDF."""
-    from sklearn.metrics.pairwise import linear_kernel
-    vec = tfidf_store["vectorizer"]
-    X = tfidf_store["matrix"]
-    q = vec.transform([query])
-    sims = linear_kernel(q, X)[0]  # shape (N,)
-    # Get top-k indices
-    if top_k >= len(sims):
-        order = np.argsort(-sims)
-    else:
-        # partial top-k for speed on large N
-        part = np.argpartition(-sims, top_k)[:top_k]
-        order = part[np.argsort(-sims[part])]
-    scores = sims[order]
-    return scores, order
-
-def faiss_search(query_text: str, index, id_map, embedder, top_k: int = 5):
-    """Encode query and search FAISS index, return list of {distance, meta}."""
-    qv = embedder.encode([query_text], convert_to_numpy=True).astype("float32")
-    if qv.ndim == 1:
-        qv = qv[None, :]
-    D, I = index.search(qv, top_k)
-    items = []
-    seen = set()
-    for dist, idx in zip(D[0], I[0]):
-        if idx < 0:
-            continue
-        meta = id_map[idx] if 0 <= idx < len(id_map) else {}
-        oid = meta.get("object_id")
-        if oid and oid in seen:
-            continue
-        if oid:
-            seen.add(oid)
-        items.append({"score": float(dist), "meta": meta, "backend": "faiss"})
-    return items
-
-def tfidf_items_from_indices(scores, indices, meta_df: pd.DataFrame | None):
-    """Build display rows for TF-IDF fallback using available metadata."""
-    rows = []
-    for s, i in zip(scores, indices):
-        meta = {}
-        if meta_df is not None:
-            # Try to attach helpful fields if present
-            for k in ["object_id", "reason", "date_created", "complex_id"]:
-                if k in meta_df.columns:
-                    val = meta_df.iloc[int(i)][k]
-                    meta[k] = None if (pd.isna(val) if hasattr(val, "__float__") else False) else val
-        rows.append({"score": float(s), "meta": meta, "backend": "tfidf"})
-    return rows
-
-# ------------
-# Streamlit UI
-# ------------
+# --- Page setup ---
 st.set_page_config(page_title="AI Review Moderation Demo", layout="wide")
 st.title("🛡️ AI Review Moderation Demo")
 
-st.caption(
-    "This demo runs fully on Streamlit. It predicts a moderation reason with the baseline "
-    "model (if present) and retrieves similar examples via FAISS; if FAISS is not available, "
-    "it falls back to TF-IDF cosine neighbors."
-)
+# --- Config & helpers ---
+ROOT = Path(__file__).resolve().parents[1] if (Path(__file__).name == "demo_app.py") else Path.cwd()
+INSIGHTS_DIR = ROOT / "reports" / "insights"
+TERMS_CSV = INSIGHTS_DIR / "top_terms_per_reason.csv"
+CHART_DIST = INSIGHTS_DIR / "class_distribution.png"
+CHART_TREND = INSIGHTS_DIR / "monthly_trend_topN.png"
+BASELINE_PATH = ROOT / "notebooks" / "model_baseline.pkl"  # adjust if you saved elsewhere
 
-# Load artifacts
-model = load_model()
-faiss_index, id_map, faiss_msg = load_faiss_index()
-embedder = load_embedder() if (faiss_index is not None and id_map is not None and faiss_msg is None) else None
-
-# Prepare TF-IDF fallback only if FAISS is not ready
-tfidf_store = None
-tfidf_meta_df = None
-tfidf_msg = None
-if embedder is None:
-    texts, df_meta, tfidf_msg = load_corpus_for_fallback(
-        expected_len=(len(id_map) if id_map is not None else None)
+def get_api_url() -> str:
+    # Read from Streamlit secrets if present, else env var, else default
+    api_from_secrets = None
+    try:
+        api_from_secrets = st.secrets.get("API_URL")  # may raise if no secrets file
+    except Exception:
+        api_from_secrets = None
+    return (
+        api_from_secrets
+        or os.environ.get("API_URL")
+        or "http://127.0.0.1:8010"
     )
-    if texts is not None:
-        tfidf_store = build_tfidf_index(texts)
-        tfidf_meta_df = df_meta
 
-# Sidebar status
-with st.sidebar:
-    st.header("Artifacts Status")
-    st.write("**Baseline model (model_baseline.pkl):** ", "✅ loaded" if model else "⚠️ not found")
-    if faiss_index is not None and id_map is not None and faiss_msg is None:
-        st.write("**Vector index:** ✅ FAISS")
-    else:
-        st.write("**Vector index:** ",
-                 "⚠️ TF-IDF fallback ready" if tfidf_store is not None else "⚠️ unavailable")
-        if faiss_msg:
-            st.caption(f"Note: {faiss_msg}")
-        if tfidf_msg and tfidf_store is None:
-            st.caption(f"Fallback note: {tfidf_msg}")
-    st.divider()
-    topk = st.slider("Top-k similar examples", 1, 10, 5)
+API_URL = get_api_url().rstrip("/")
 
-# Input
-user_text = st.text_area("Input review text", height=160, placeholder="Paste a review here...")
-
-col1, col2 = st.columns([1, 2])
-with col1:
-    if st.button("Analyze", type="primary", use_container_width=True):
-        st.session_state["last_query"] = user_text
-
-query = st.session_state.get("last_query")
-if query:
-    st.subheader("Results")
-
-    # --- 1) Prediction ---
-    with st.container(border=True):
-        st.markdown("### Predicted Reason / Confidence")
-        if model is None:
-            st.info("Baseline model not found. Add `model_baseline.pkl` to enable predictions.")
-        else:
-            try:
-                pred = model.predict([query])[0]
-                proba_tbl = None
-                # Best-effort: show top-5 class probabilities if available
-                final_est = getattr(model, "steps", [("final", model)])[-1][1]
-                if hasattr(final_est, "predict_proba"):
-                    probs = final_est.predict_proba([query])[0]
-                    classes = list(final_est.classes_)
-                    order = np.argsort(probs)[::-1][:5]
-                    proba_tbl = pd.DataFrame({
-                        "reason": [classes[i] for i in order],
-                        "prob": [float(probs[i]) for i in order]
-                    })
-                st.write(f"**Predicted reason:** `{pred}`")
-                if proba_tbl is not None:
-                    st.dataframe(proba_tbl, hide_index=True, use_container_width=True)
-            except Exception as e:
-                st.error(f"Prediction failed: {e}")
-
-    # --- 2) Similar examples ---
-    with st.container(border=True):
-        st.markdown("### Similar Examples")
+@st.cache_data(show_spinner=False)
+def load_terms_csv(csv_path: Path) -> Optional[pd.DataFrame]:
+    if csv_path.exists():
         try:
-            if embedder is not None and faiss_index is not None and id_map is not None:
-                rows = faiss_search(query, faiss_index, id_map, embedder, top_k=topk)
-                backend = "faiss"
-            elif tfidf_store is not None:
-                scores, idxs = tfidf_search(query, tfidf_store, top_k=topk)
-                rows = tfidf_items_from_indices(scores, idxs, tfidf_meta_df)
-                backend = "tfidf"
-            else:
-                rows = []
-                backend = None
-
-            if not rows:
-                st.info("No similar examples available. Provide FAISS index or processed CSV to enable this section.")
-            else:
-                st.caption(f"Backend: **{backend}**")
-                for i, item in enumerate(rows, start=1):
-                    meta = item["meta"]
-                    distance_or_score = item["score"]
-                    label = "distance" if backend == "faiss" else "cosine"
-                    st.markdown(
-                        f"**#{i}** — {label}: `{distance_or_score:.4f}`  "
-                        f"• reason: `{meta.get('reason', 'N/A')}`  "
-                        f"• object_id: `{meta.get('object_id', 'N/A')}`  "
-                        f"• date: `{meta.get('date_created', 'N/A')}`"
-                    )
+            df = pd.read_csv(csv_path)
+            return df
         except Exception as e:
-            st.error(f"Similarity search failed: {e}")
+            st.warning(f"Failed to read {csv_path.name}: {e}")
+    return None
+
+def post_json(url: str, payload: Dict[str, Any], timeout: int = 30) -> requests.Response:
+    return requests.post(url, json=payload, timeout=timeout)
+
+# Optional: try to load a local baseline sklearn pipeline if available
+@st.cache_resource(show_spinner=False)
+def load_baseline_model() -> Optional[Any]:
+    try:
+        import joblib  # lazy import
+        if BASELINE_PATH.exists():
+            return joblib.load(BASELINE_PATH)
+    except Exception as e:
+        st.info(f"Baseline model not available: {e}")
+    return None
+
+def predict_baseline(pipeline, texts: List[str]) -> Dict[str, Any]:
+    """Predict using a scikit-learn text pipeline (if available)."""
+    out: Dict[str, Any] = {"preds": [], "proba": None}
+    try:
+        y_pred = pipeline.predict(texts)
+        out["preds"] = list(map(lambda x: x if isinstance(x, str) else str(x), y_pred))
+        # Try to get probabilities if classifier supports it
+        if hasattr(pipeline, "predict_proba"):
+            proba = pipeline.predict_proba(texts)
+            # For a single text, return top-3 classes with their prob
+            out["proba"] = proba.tolist()
+    except Exception as e:
+        out["error"] = f"Baseline prediction failed: {e}"
+    return out
+
+# --- UI: tabs ---
+tab1, tab2 = st.tabs(["🔍 Model Inference", "📊 Insights"])
+
+# ==============================================================================
+# Tab 1: Inference
+# ==============================================================================
+with tab1:
+    st.subheader("Model Inference")
+
+    # Sidebar controls
+    with st.sidebar:
+        st.markdown("### API Settings")
+        st.caption("Change only if your API runs on a different host/port.")
+        api_url_input = st.text_input("FastAPI base URL", value=API_URL, help="Example: http://127.0.0.1:8010")
+        use_baseline = st.checkbox("Use local baseline model (optional)", value=True, help="Requires model_baseline.pkl")
+        show_raw = st.checkbox("Show raw JSON", value=False)
+    API_URL = api_url_input.rstrip("/")
+
+    # Input area
+    default_text = "This post contains spam links like http://cheap.example"
+    text = st.text_area("Enter a review to analyze", value=default_text, height=140)
+    k = st.slider("Top-K similar examples", min_value=1, max_value=10, value=5, step=1)
+
+    cols = st.columns([1, 1])
+    with cols[0]:
+        run_infer = st.button("Analyze")
+    with cols[1]:
+        st.markdown(f"**API Health:** `{API_URL}/health`")
+
+    # Results
+    if run_infer:
+        if not text.strip():
+            st.warning("Please enter some text.")
+        else:
+            # Call /similar for nearest neighbors
+            with st.spinner("Calling /similar ..."):
+                try:
+                    r = post_json(f"{API_URL}/similar", {"text": text, "k": k}, timeout=60)
+                    if r.status_code == 200:
+                        sim = r.json()
+                        if show_raw:
+                            st.code(json.dumps(sim, indent=2)[:5000], language="json")
+                        items = sim.get("items", [])
+                        st.success(f"Similar examples (k={len(items)}) via {sim.get('vector_backend','?')}")
+                        if items:
+                            # Pretty table for similar results
+                            rows = []
+                            for it in items:
+                                meta = it.get("meta", {})
+                                rows.append({
+                                    "index": it.get("index"),
+                                    "distance": round(it.get("distance", 0.0), 4),
+                                    "reason": meta.get("reason"),
+                                    "date_created": meta.get("date_created"),
+                                    "object_id": meta.get("object_id"),
+                                    "complex_id": meta.get("complex_id"),
+                                })
+                            st.dataframe(pd.DataFrame(rows), use_container_width=True)
+                        else:
+                            st.info("No items returned.")
+                    else:
+                        st.error(f"/similar returned HTTP {r.status_code}: {r.text[:400]}")
+                except Exception as e:
+                    st.error(f"Request failed: {e}")
+
+            # Optional: local baseline model prediction
+            if use_baseline:
+                baseline = load_baseline_model()
+                if baseline is None:
+                    st.info("No local baseline model found (expected notebooks/model_baseline.pkl).")
+                else:
+                    with st.spinner("Running baseline prediction ..."):
+                        res = predict_baseline(baseline, [text])
+                        if "error" in res:
+                            st.error(res["error"])
+                        else:
+                            cols2 = st.columns([1, 1])
+                            with cols2[0]:
+                                st.markdown("**Baseline Predicted Reason**")
+                                st.info(res["preds"][0] if res["preds"] else "(no prediction)")
+                            with cols2[1]:
+                                if res.get("proba"):
+                                    st.markdown("**Baseline Probabilities (top classes)**")
+                                    # We don't know class order here; show vector length only
+                                    st.write(res["proba"][0][:5])
+                                else:
+                                    st.caption("Classifier does not expose predict_proba()")
+
+# ==============================================================================
+# Tab 2: Insights
+# ==============================================================================
+with tab2:
+    st.subheader("Descriptive Insights")
+
+    charts_cols = st.columns(2)
+    # Chart: class distribution
+    with charts_cols[0]:
+        if CHART_DIST.exists():
+            st.image(str(CHART_DIST), caption="Class Distribution", use_container_width=True)
+        else:
+            st.warning(f"Missing: {CHART_DIST.relative_to(ROOT)}")
+    # Chart: monthly trend
+    with charts_cols[1]:
+        if CHART_TREND.exists():
+            st.image(str(CHART_TREND), caption="Monthly Trend of Top Categories", use_container_width=True)
+        else:
+            st.warning(f"Missing: {CHART_TREND.relative_to(ROOT)}")
+
+    st.markdown("---")
+    st.markdown("**Top TF-IDF Terms per Reason**")
+    df_terms = load_terms_csv(TERMS_CSV)
+    if df_terms is not None and not df_terms.empty:
+        # Optional small filters
+        cols3 = st.columns([2, 2, 1])
+        with cols3[0]:
+            reasons = sorted(df_terms["reason"].dropna().astype(str).unique().tolist())
+            pick = st.multiselect("Filter by reason(s)", reasons, default=reasons[:3])
+        with cols3[1]:
+            topn = st.number_input("Show top N rows", min_value=5, max_value=200, value=30, step=5)
+        out_df = df_terms.copy()
+        if pick:
+            out_df = out_df[out_df["reason"].astype(str).isin(pick)]
+        st.dataframe(out_df.head(int(topn)), use_container_width=True)
+        # Download button
+        st.download_button(
+            label="Download CSV",
+            data=out_df.to_csv(index=False).encode("utf-8"),
+            file_name="top_terms_per_reason.filtered.csv",
+            mime="text/csv",
+        )
+    else:
+        st.warning(f"Missing or empty: {TERMS_CSV.relative_to(ROOT)}")
+
+# --- Footer info ---
+st.caption(
+    f"API base: `{API_URL}`  •  "
+    f"Insights dir: `{INSIGHTS_DIR.relative_to(ROOT)}`  •  "
+    f"Baseline model: `{BASELINE_PATH.relative_to(ROOT)}`"
+)
