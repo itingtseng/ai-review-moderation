@@ -1,0 +1,9 @@
+Run timestamp: 2025-10-15T21:12:41
+Model path: ../app/model_baseline.pkl
+Labels path: ../data/labels.json
+Num labels: 9
+Notes:
+- Character-level TF-IDF + LinearSVC pipeline loaded from artifacts.
+- Batch inference expects a CSV with a 'text' column.
+- If labeled CSV is provided, we compute classification report and confusion matrix.
+- We also save low-confidence cases (by top-2 margin) for human review.
